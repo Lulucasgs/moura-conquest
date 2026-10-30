@@ -127,14 +127,12 @@
     });
   }
 
-  /* ---------- Bento: spotlight, borda, tilt, faíscas, clique ---------- */
+  /* ---------- Bento: spotlight laranja, borda e tilt leve ---------- */
   function iniciaBento(temGsap) {
     var cards = document.querySelectorAll('.bcard');
     if (!cards.length || !mouseFino || reduz) return;
 
     cards.forEach(function (card) {
-      var timers = [];
-      var faiscas = [];
 
       card.addEventListener('mousemove', function (e) {
         var r = card.getBoundingClientRect();
@@ -148,43 +146,10 @@
         }
       });
 
-      card.addEventListener('mouseenter', function () {
-        if (!temGsap) return;
-        var r = card.getBoundingClientRect();
-        for (var k = 0; k < 8; k++) {
-          timers.push(setTimeout(function () {
-            var s = document.createElement('span');
-            s.className = 'spark';
-            s.style.left = Math.random() * r.width + 'px';
-            s.style.top = Math.random() * r.height + 'px';
-            card.appendChild(s);
-            faiscas.push(s);
-            gsap.fromTo(s, { scale: 0, opacity: 0, rotation: Math.random() * 360 }, { scale: 1, opacity: 1, duration: 0.25 });
-            gsap.to(s, { x: (Math.random() - 0.5) * 90, y: (Math.random() - 0.5) * 90, duration: 1.6 + Math.random() * 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-          }, k * 90));
-        }
-      });
-
       card.addEventListener('mouseleave', function () {
-        timers.forEach(clearTimeout); timers = [];
-        faiscas.forEach(function (s) {
-          if (temGsap) gsap.to(s, { scale: 0, opacity: 0, duration: 0.25, onComplete: function () { s.remove(); } });
-          else s.remove();
-        });
-        faiscas = [];
         if (temGsap) gsap.to(card, { rotateX: 0, rotateY: 0, x: 0, y: 0, duration: 0.35, ease: 'power2.out' });
       });
 
-      card.addEventListener('click', function (e) {
-        if (!temGsap) return;
-        var r = card.getBoundingClientRect();
-        var rp = document.createElement('span');
-        rp.className = 'ripple';
-        rp.style.left = (e.clientX - r.left) + 'px';
-        rp.style.top = (e.clientY - r.top) + 'px';
-        card.appendChild(rp);
-        gsap.fromTo(rp, { scale: 0, opacity: 1 }, { scale: 45, opacity: 0, duration: 0.8, ease: 'power2.out', onComplete: function () { rp.remove(); } });
-      });
     });
   }
 
@@ -253,12 +218,14 @@
       return tl;
     }
 
-    if (desktop()) {
+    if (desktop() && window.innerHeight >= 720) {
       var tl = montaTimeline();
       ScrollTrigger.create({
         trigger: '#como-funciona .conecta__pin',
         start: 'top top',
-        end: '+=1600',
+        end: '+=1400',
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
         pin: true,
         scrub: 0.6,
         animation: tl,

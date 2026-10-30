@@ -15,8 +15,6 @@ Trocar `SEU-DOMINIO` em `robots.txt` e `sitemap.xml` pelo domínio real.
 Adicionar no `<head>` do index.html: `<link rel="canonical" href="https://dominio/">` e a URL absoluta em `og:image`.
 
 ## Pendências do cliente (marcadas no site com etiqueta laranja tracejada)
-- Endereço completo (também adicionar `streetAddress` e `postalCode` no schema LocalBusiness do index.html)
-- Horário de atendimento
 - Área atendida confirmada (o site diz "região metropolitana de Curitiba")
 - Fotos de antes e depois de peças recuperadas
 - Domínio e Perfil da Empresa no Google com o mesmo nome, endereço e telefone
