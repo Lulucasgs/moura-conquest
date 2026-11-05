@@ -17,4 +17,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://SEU-DOMINIO/sitemap.xml
+Sitemap: https://moura-conquest.vercel.app/sitemap.xml

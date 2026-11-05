@@ -11,7 +11,7 @@ Site estático (HTML, CSS e JS). Não precisa de build.
 Pelo terminal: `npx vercel` dentro da pasta, depois `npx vercel --prod`.
 
 ## Depois de ter o domínio
-Trocar `SEU-DOMINIO` em `robots.txt` e `sitemap.xml` pelo domínio real.
+Hoje o site usa https://moura-conquest.vercel.app. Ao trocar para domínio próprio, substituir esse endereço em `robots.txt`, `sitemap.xml` e no `index.html` (canonical, og:url, og:image e schema).
 Adicionar no `<head>` do index.html: `<link rel="canonical" href="https://dominio/">` e a URL absoluta em `og:image`.
 
 ## Pendências do cliente (marcadas no site com etiqueta laranja tracejada)
