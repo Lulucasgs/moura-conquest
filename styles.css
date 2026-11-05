@@ -385,3 +385,16 @@ p+p{margin-top:12px}
 }
 .dados li span{display:block}
 .link-mapa{display:inline-block;margin-top:6px;font-family:var(--head);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:16px!important;color:var(--laranja)}
+
+/* ===== Ajustes v3 (05/11) ===== */
+/* Usinagem: duas fotos lado a lado */
+.usin-fotos{display:grid;grid-template-columns:1fr 1fr;gap:14px;aspect-ratio:auto;max-height:none}
+.usin-fotos .ph{aspect-ratio:3/4;margin:0}
+.usin-fotos .ph::after,.foto-leg::after{display:none}
+.usin-fotos figcaption,.foto-leg figcaption{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:32px 14px 12px;font-family:var(--head);font-weight:700;font-size:15px;line-height:1.15;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.82))}
+@media (max-width:480px){.usin-fotos{gap:10px}.usin-fotos figcaption{font-size:13px;padding:26px 10px 10px}}
+/* Serrarias: galeria 3 x 2 */
+@media (min-width:641px){.serrarias__fotos{max-width:960px}}
+/* Trabalhos: fotos um pouco mais baixas no desktop (8 itens) */
+@media (min-width:960px){.titem .ph{aspect-ratio:1/1}.trab__lista{gap:40px}}
+@media (max-width:640px){.serrarias__fotos{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%}}
